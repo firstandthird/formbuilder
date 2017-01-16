@@ -52,3 +52,45 @@ Outputs:
   <button type="button" class="button">Submit</button>
 </form>
 ```
+
+### Custom types
+
+Custom types can be defined by extending the base class and implementing a basic api. Templates are passed through lodash.template.
+
+```js
+class CustomField extends FormBuilder.baseTypeClass() {
+  constructor(...args) {
+    super();
+
+    // These are the two important properties. defaults is optional.
+    this.template = '<custom class="${className}"></custom>';
+    this.defaults = {
+      className: 'test-class'
+    }
+
+    return this.setup(...args);
+  }
+}
+
+const form = new FormBuilder({
+  id: 'testForm',
+  action: '/api/test/form',
+  method: 'POST',
+  className: 'form',
+  fields: [
+    {
+      type: 'custom',
+      className: 'something'
+    }
+  ]
+});
+
+// First param is the type name, second is the class
+form.registerCustomType('custom', CustomField);
+
+const html = form.toHTML();
+```
+
+```html
+<form method="POST" action="/api/test/form" class="form"><custom class="something"></custom></form>
+```
