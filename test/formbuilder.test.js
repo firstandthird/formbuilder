@@ -45,11 +45,8 @@ test('Input generation', assert => {
 
 test('custom class', assert => {
   class CustomField extends FormBuilder.baseTypeClass() {
-    constructor(...args) {
-      super();
+    init() {
       this.template = '<custom></custom>';
-
-      return this.setup(...args);
     }
   }
 

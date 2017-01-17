@@ -59,16 +59,12 @@ Custom types can be defined by extending the base class and implementing a basic
 
 ```js
 class CustomField extends FormBuilder.baseTypeClass() {
-  constructor(...args) {
-    super();
-
-    // These are the two important properties. defaults is optional.
+  init() {
+    // this.defaults is optional.
     this.template = '<custom class="${className}"></custom>';
     this.defaults = {
       className: 'test-class'
-    }
-
-    return this.setup(...args);
+    };
   }
 }
 
