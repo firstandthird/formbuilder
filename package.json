@@ -1,6 +1,6 @@
 {
   "name": "formbuilder",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "Takes a JSON-like schema and generates a form.",
   "main": "dist/formbuilder.js",
   "keywords": [
