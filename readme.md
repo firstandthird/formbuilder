@@ -53,18 +53,67 @@ Outputs:
 </form>
 ```
 
+### Built in types
+
+#### input (text/email/password/etc..)
+
+This is the default type that is used when no other type matches.
+
+**Options**
+
+   - `id` (optional) - id that is placed on the element and label
+   - `label` (optional) - Label element text.
+   - `className` (optional) - Class for the input element
+   - `required` (default: false) - Sets required attribute
+   - `placeholder` (optional) - Sets placeholder value
+   - `value` (optional) - Input value
+
+#### textarea
+
+**Options**
+
+  - `id` (optional) - id that is placed on the element and label
+  - `label` (optional) - Label element text.
+  - `className` (optional) - Class for the input element
+  - `required` (default: false) - Sets required attribute
+  - `placeholder` (optional) - Sets placeholder value
+  - `value` (optional) - Input value
+
+#### select
+
+**Options**
+
+  - `id` (optional) - id that is placed on the element and label
+  - `label` (optional) - Label element text.
+  - `className` (optional) - Class for the input element
+  - `multiple` (default: false) - Sets multiple attribute
+  - `required` (default: false) - Sets required attribute
+  - `value` (optional) - Input value
+  - `options` - Items may be an strings objects with a name and value property: `{ value: 'somevalue', name: 'Some Value'}`. If `value` above matches the item value the selected attribute will be set.
+
+#### button
+
+**Options**
+
+  - `className` (optional) - Class for the button element
+  - `value` (optional) - Button text
+  - `buttonType` (default: submit) - Type of button
+
 ### Custom types
 
 Custom types can be defined by extending the base class and implementing a basic api. Templates are passed through lodash.template.
 
 ```js
 class CustomField extends FormBuilder.baseTypeClass() {
-  init() {
-    // this.defaults is optional.
-    this.template = '<custom class="${className}"></custom>';
-    this.defaults = {
+  get template() {
+    return '<custom class="${className}"></custom>';
+  }
+
+  // optional
+  get defaults() {
+    return {
       className: 'test-class'
-    };
+    }
   }
 }
 

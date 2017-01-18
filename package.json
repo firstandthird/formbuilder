@@ -1,6 +1,6 @@
 {
   "name": "@firstandthird/formbuilder",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "Takes a JSON-like schema and generates a form.",
   "main": "dist/formbuilder.js",
   "keywords": [

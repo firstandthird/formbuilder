@@ -35,6 +35,34 @@ test('Input generation', assert => {
         className: 'input'
       },
       {
+        type: 'select',
+        id: 'color',
+        label: 'Favorite Color',
+        className: 'input',
+        value: 'yellow',
+        options: [
+          {
+            value: 'orange',
+            name: 'Orange'
+          },
+          {
+            value: 'yellow',
+            name: 'Yellow'
+          },
+          {
+            value: 'gold',
+            name: 'Gold'
+          }
+        ]
+      },
+      {
+        type: 'select',
+        id: 'animal',
+        label: 'Animal',
+        className: 'input',
+        options: ['Dog', 'Cat']
+      },
+      {
         type: 'submit',
         className: 'button',
         value: 'Submit'
@@ -42,8 +70,9 @@ test('Input generation', assert => {
     ]
   });
 
+  // @TODO: Lets figure out a better solution here.
   const html = form.toHTML();
-  const expected = '<form method="POST" action="/api/test/form" class="form"><label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" class="input" value="false" required><label for="email">Email</label><input type="email" id="email" name="email" class="input" value="false" placeholder="email@example.com"><label for="bio">Bio</label><textarea id="bio" name="bio" class="input"></textarea><input type="submit" class="button" value="Submit"></form>';
+  const expected = '<form method="POST" action="/api/test/form" class="form"><label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" class="input" value="false" required><label for="email">Email</label><input type="email" id="email" name="email" class="input" value="false" placeholder="email@example.com"><label for="bio">Bio</label><textarea id="bio" name="bio" class="input"></textarea><label for="color">Favorite Color</label>\n    <select id="color" name="color" class="input">\n      \n        \n        <option value="orange">Orange</option>\n      \n        \n        <option value="yellow" selected>Yellow</option>\n      \n        \n        <option value="gold">Gold</option>\n      \n    </select><label for="animal">Animal</label>\n    <select id="animal" name="animal" class="input">\n      \n        \n        <option value="Dog">Dog</option>\n      \n        \n        <option value="Cat">Cat</option>\n      \n    </select><input type="submit" class="button" value="Submit"></form>';
   assert.equal(html, expected, 'HTML as expected');
 
   assert.end();
@@ -51,8 +80,8 @@ test('Input generation', assert => {
 
 test('custom class', assert => {
   class CustomField extends FormBuilder.baseTypeClass() {
-    init() {
-      this.template = '<custom></custom>';
+    get template() {
+      return '<custom></custom>';
     }
   }
 
