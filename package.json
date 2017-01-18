@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "nswatch",
-    "build": "browserify lib/formbuilder.js -t [ babelify --presets [ es2015 ] ] -o dist/formbuilder.js -s FormBuilder",
+    "build": "mkdir -p dist && browserify lib/formbuilder.js -t [ babelify --presets [ es2015 ] ] -o dist/formbuilder.js -s FormBuilder",
     "test": "browserify -t [ babelify --presets [ es2015 ] ] test/formbuilder.test.js | tape-run --render tap-spec",
     "lint": "eslint . --ignore-pattern dist",
     "prepublish": "npm run build"
