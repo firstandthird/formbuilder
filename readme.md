@@ -12,13 +12,17 @@ const formSchema = {
   action: '/api/test/form',
   method: 'POST',
   className: 'form',
+  extraProps: 'data-module="Form"',
   fields: [
     {
       type: 'text',
       id: 'firstName',
       label: 'First Name',
       className: 'input',
-      required: true
+      required: true,
+      extraProps: {
+        'data-name': 'firstName'
+      }
     },
     {
       type: 'email',
@@ -44,9 +48,9 @@ console.log(html);
 Outputs:
 
 ```html
-<form action="/api/test/form" method="POST" class="form">
+<form action="/api/test/form" method="POST" class="form" data-module="Form">
   <label for="firstName">First Name</label>
-  <input type="text" id="firstName" name="firstName" class="input" required>
+  <input type="text" id="firstName" name="firstName" class="input" required data-name="firstName">
   <label for="email">Email</label>
   <input type="email" id="email" name="email" class="input" placeholder="email@example.com">
   <button type="button" class="button">Submit</button>
@@ -67,6 +71,7 @@ This is the default type that is used when no other type matches.
    - `required` (default: false) - Sets required attribute
    - `placeholder` (optional) - Sets placeholder value
    - `value` (optional) - Input value
+   - `extraProps` (optional) - Key->value object or a string of extra properties.
 
 #### textarea
 
@@ -78,6 +83,7 @@ This is the default type that is used when no other type matches.
   - `required` (default: false) - Sets required attribute
   - `placeholder` (optional) - Sets placeholder value
   - `value` (optional) - Input value
+  - `extraProps` (optional) - Key->value object or a string of extra properties.
 
 #### select
 
@@ -90,6 +96,7 @@ This is the default type that is used when no other type matches.
   - `required` (default: false) - Sets required attribute
   - `value` (optional) - Input value
   - `options` - Items may be an strings objects with a name and value property: `{ value: 'somevalue', name: 'Some Value'}`. If `value` above matches the item value the selected attribute will be set.
+  - `extraProps` (optional) - Key->value object or a string of extra properties.
 
 #### button
 
@@ -98,6 +105,7 @@ This is the default type that is used when no other type matches.
   - `className` (optional) - Class for the button element
   - `value` (optional) - Button text
   - `buttonType` (default: submit) - Type of button
+  - `extraProps` (optional) - Key->value object or a string of extra properties.
 
 ### Custom types
 
