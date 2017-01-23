@@ -1,8 +1,9 @@
 {
   "name": "@firstandthird/formbuilder",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.7",
   "description": "Takes a JSON-like schema and generates a form.",
   "main": "dist/formbuilder.js",
+  "module": "lib/formbuilder.js",
   "keywords": [
     "browser",
     "form",
@@ -10,10 +11,10 @@
   ],
   "scripts": {
     "dev": "nswatch",
-    "build": "mkdir -p dist && browserify lib/formbuilder.js -t [ babelify --presets [ es2015 ] ] -o dist/formbuilder.js -s FormBuilder",
+    "build": "scriptkit build",
     "test": "browserify -t [ babelify --presets [ es2015 ] ] test/formbuilder.test.js | tape-run --render tap-spec",
     "lint": "eslint . --ignore-pattern dist",
-    "prepublish": "npm run build"
+    "prepublish": "scriptkit"
   },
   "watch": {
     "lib/*.js": [
@@ -45,6 +46,7 @@
     "eslint-config-firstandthird": "^3.2.0",
     "eslint-plugin-import": "^2.2.0",
     "nswatch": "^0.2.0",
+    "scriptkit": "0.0.10",
     "static-server": "^2.0.3",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.3",
