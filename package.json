@@ -10,10 +10,10 @@
     "json"
   ],
   "scripts": {
-    "dev": "nswatch",
+    "dev": "scriptkit dev",
     "build": "scriptkit",
-    "test": "browserify -t [ babelify --presets [ es2015 ] ] test/formbuilder.test.js | tape-run --render tap-spec",
-    "lint": "eslint . --ignore-pattern dist",
+    "sk": "scriptkit",
+    "test": "cat test/formbuilder.test.dist.js | tape-run --render tap-spec",
     "prepublish": "scriptkit"
   },
   "watch": {
@@ -38,19 +38,13 @@
   },
   "homepage": "https://github.com/firstandthird/formbuilder#readme",
   "devDependencies": {
-    "babel-preset-es2015": "^6.18.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.3.0",
     "concurrently": "^3.1.0",
-    "eslint": "^3.9.1",
     "eslint-config-firstandthird": "^3.2.0",
     "eslint-plugin-import": "^2.2.0",
-    "nswatch": "^0.2.0",
     "scriptkit": "0.0.12",
-    "static-server": "^2.0.3",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.3",
-    "tape-run": "^2.1.5"
+    "tape-rollup": "^4.6.4",
+    "tape-run": "^2.1.5",
+    "tap-spec": "^4.1.1"
   },
   "eslintConfig": {
     "env": {
@@ -61,18 +55,6 @@
       "no-underscore-dangle": 0
     }
   },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015"
-          ]
-        }
-      ]
-    ]
-  },
   "dependencies": {
     "lodash-es": "^4.17.4",
     "lodash.template": "^4.4.0"
@@ -80,7 +62,8 @@
   "scriptkit": {
     "scripts": {
       "files": {
-        "dist/formbuilder.js": "lib/formbuilder.js"
+        "dist/formbuilder.js": "lib/formbuilder.js",
+        "test/formbuilder.test.dist.js": "test/formbuilder.test.js"
       }
     }
   }
