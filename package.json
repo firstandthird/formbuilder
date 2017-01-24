@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "dev": "nswatch",
-    "build": "scriptkit build",
+    "build": "scriptkit",
     "test": "browserify -t [ babelify --presets [ es2015 ] ] test/formbuilder.test.js | tape-run --render tap-spec",
     "lint": "eslint . --ignore-pattern dist",
     "prepublish": "scriptkit"
@@ -74,6 +74,14 @@
     ]
   },
   "dependencies": {
+    "lodash-es": "^4.17.4",
     "lodash.template": "^4.4.0"
+  },
+  "scriptkit": {
+    "scripts": {
+      "files": {
+        "dist/formbuilder.js": "lib/formbuilder.js"
+      }
+    }
   }
 }
