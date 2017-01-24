@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "dev": "scriptkit dev",
-    "build": "scriptkit",
+    "build": "scriptkit build",
     "sk": "scriptkit",
     "test": "cat test/formbuilder.test.dist.js | tape-run --render tap-spec",
     "prepublish": "scriptkit"
