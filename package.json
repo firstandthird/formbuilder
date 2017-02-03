@@ -42,7 +42,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.3.0",
     "concurrently": "^3.1.0",
-    "eslint": "^3.9.1",
+    "eslint": "3.14.1",
     "eslint-config-firstandthird": "^3.2.0",
     "eslint-plugin-import": "^2.2.0",
     "nswatch": "^0.2.0",
