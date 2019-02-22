@@ -1,6 +1,6 @@
+'use strict';
+import test from 'tape-rollup';
 import FormBuilder from '../lib/formbuilder';
-
-import { test } from 'tape';
 
 test('implementation', assert => {
   assert.equal(typeof FormBuilder, 'function', 'FormBuilder class exists');
